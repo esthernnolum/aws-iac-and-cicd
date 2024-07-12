@@ -1,0 +1,15 @@
+# buildspec.yml for Frontend
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - yarn install
+  build:
+    commands:
+      - yarn build
+
+artifacts:
+  base-directory: .next
+  files:
+    - '**/*'
