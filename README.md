@@ -44,7 +44,7 @@ terraform apply
 6. IAM Roles and Policies: To manage access securely.
 7. CI/CD Pipeline Setup Documentation:
 
-##Steps to Set Up the CI/CD Pipeline:
+## Steps to Set Up the CI/CD Pipeline:
 
 1. Configure AWS CodePipeline for the frontend:
 Use the modules/codepipeline module to create a pipeline that triggers on code changes, builds the React/Next.js application, and deploys it using AWS Amplify.
