@@ -11,12 +11,16 @@ Module Structure: This module-based structure organizes the infrastructure into 
 7. modules/codepipeline
 8. modules/cloudwatch
 
+## Prerequisites
+1. You need an AWS account with the necessary authorization to generate resources in these scripts.
+2. Linux server with git, terraform and aws cli installed
+3. Ensure that the github_connection.arn referenced in the CodePipeline configuration (modules/codepipeline/main.tf) exists and is accessible to Terraform
 
-Steps to Provision the Infrastructure:
+## Steps to Provision the Infrastructure:
 
 1. Clone the repository containing the Terraform scripts:
 ```
-git clone https://github.com/esthernnolum/aws-iac-and-cicd
+git clone https://github.com/esthernnolum/aws-iac-and-cicd.git
 cd aws-iac-and-cicd
 ```
 2. Initialize Terraform:
@@ -52,12 +56,10 @@ Use the modules/codepipeline module to create a pipeline that triggers on code c
 2. Configure AWS CodePipeline for the backend:
 Use the same module to create a pipeline for the backend. The pipeline will trigger on code changes, build the Node.js application using AWS CodeBuild, and deploy it to AWS Lambda.
 
-3. Monitoring and Logging Setup Documentation: 
-
-Steps to Set Up Monitoring and Logging:
-Configure CloudWatch for Lambda and RDS:
-Use the modules/cloudwatch module to set up CloudWatch log groups, metrics, and alarms.
-Configure alarms for Lambda function errors, latency, and RDS CPU utilization.
+## Monitoring and Logging Setup Documentation: 
+1. Configure CloudWatch for Lambda and RDS:
+2. Use the modules/cloudwatch module to set up CloudWatch log groups, metrics, and alarms.
+3. Configure alarms for Lambda function errors, latency, and RDS CPU utilization.
 
 ## Deliverables
 1. Infrastructure as Code (IaC) scripts: Provided in the modules and main.tf files.
