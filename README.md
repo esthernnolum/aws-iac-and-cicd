@@ -1,6 +1,6 @@
 # AWS Infrastructure and CI/CD Pipeline
 
-This project involves designing and implementing an AWS infrastructure using Terraform to support a highly available and scalable web application. The application features a frontend built with React/Next.js hosted on AWS Amplify, a backend built with Node.js hosted on AWS Lambda, and a MySQL database hosted on Amazon RDS. Additionally, the project includes setting up a CI/CD pipeline for automated deployment.
+This project involves designing and implementing an AWS infrastructure using Terraform to support a highly available and scalable web application. The application features a frontend built with React/Next.js hosted on AWS Amplify, a backend built with Node.js hosted on AWS Lambda, and a MySQL database hosted on Amazon RDS. Additionally, the project includes setting up a CI/CD pipeline for automated deployment and Monitoring/logging for the application.
 
  ## 📌 Architecture Diagram
 
