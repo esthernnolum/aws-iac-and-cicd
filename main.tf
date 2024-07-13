@@ -1,3 +1,5 @@
+
+# IaC Scripts
 module "vpc" {
   source = "./modules/vpc"
 }
@@ -32,6 +34,7 @@ module "amplify" {
   source = "./modules/amplify"
 }
 
+# CI/CD pipeline scripts
 module "codepipeline" {
   source                  = "./modules/codepipeline"
   codepipeline_role_arn   = module.iam.codepipeline_role_arn
@@ -41,6 +44,7 @@ module "codepipeline" {
   lambda_function_name    = module.lambda.lambda_function_name
 }
 
+# Monitoring and logging
 module "cloudwatch" {
   source                  = "./modules/cloudwatch"
   lambda_function_name    = module.lambda.lambda_function_name

@@ -23,6 +23,17 @@ variable "lambda_function_name" {
   type        = string
 }
 
+resource "aws_s3_bucket" "codepipeline_bucket" {
+  bucket = "codepipeline-artifacts-bucket-${random_string.suffix.result}"
+  acl    = "private"
+}
+
+resource "random_string" "suffix" {
+  length  = 8
+  special = false
+  upper   = false
+}
+
 resource "aws_codepipeline" "frontend_pipeline" {
   name     = "frontend-pipeline"
   role_arn = var.codepipeline_role_arn
