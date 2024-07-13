@@ -23,6 +23,11 @@ variable "lambda_function_name" {
   type        = string
 }
 
+variable "lambda_alias_name" {
+  description = "The name of the Lambda alias"
+  type        = random_string
+}
+
 resource "aws_s3_bucket" "codepipeline_bucket" {
   bucket = "codepipeline-artifacts-bucket-${random_string.suffix.result}"
   acl    = "private"
@@ -139,7 +144,30 @@ resource "aws_codepipeline" "backend_pipeline" {
       input_artifacts  = ["build_output"]
 
       configuration = {
-        FunctionName = var.lambda_function_name
+        FunctionName    = var.lambda_function_name
+        Qualifier       = var.lambda_alias_name
+        S3Bucket        = aws_s3_bucket.codepipeline_bucket.bucket
+        S3Key           = "build_output/function.zip"
+      }
+    }
+  }
+
+  stage {
+    name = "UpdateAlias"
+
+    action {
+      name             = "UpdateAlias"
+      category         = "Invoke"
+      owner            = "AWS"
+      provider         = "Lambda"
+      version          = "1"
+      input_artifacts  = ["build_output"]
+
+      configuration = {
+        FunctionName   = var.lambda_function_name
+        Qualifier      = var.lambda_alias_name
+        FunctionAlias  = var.lambda_alias_name
+        FunctionName   = var.lambda_function_name
       }
     }
   }
