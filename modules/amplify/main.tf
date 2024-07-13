@@ -1,6 +1,6 @@
 resource "aws_amplify_app" "app" {
   name                = "amplify-app"
-  repository          = "https://github.com/amorserv-repo/frontend"
+  repository          = "https://github.com/my-repo/frontend"
   oauth_token         = var.github_token
 
   environment_variables = {

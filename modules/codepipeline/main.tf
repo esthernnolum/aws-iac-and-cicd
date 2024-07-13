@@ -60,8 +60,8 @@ resource "aws_codepipeline" "frontend_pipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        ConnectionArn = amorserv-repo.github_connection.arn
-        FullRepositoryId = "amorserv-repo/frontend"
+        ConnectionArn = my-repo.github_connection.arn
+        FullRepositoryId = "my-repo/frontend"
         BranchName = "main"
       }
     }
@@ -107,8 +107,8 @@ resource "aws_codepipeline" "backend_pipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        ConnectionArn = amorserv-repo.github_connection.arn
-        FullRepositoryId = "amorserv-repo/backend"
+        ConnectionArn = my-repo.github_connection.arn
+        FullRepositoryId = "my-repo/backend"
         BranchName = "main"
       }
     }
