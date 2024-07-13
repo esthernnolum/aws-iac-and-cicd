@@ -122,6 +122,8 @@ IAM roles and policies were defined to securely manage access to AWS resources a
 5. Error Handling and Alerts:
 CloudWatch alarms were configured for critical metrics such as Lambda errors, latency, and RDS CPU utilization to ensure that issues are promptly detected and addressed.
 
+To ensure zero-downtime deployments for AWS Lambda, we use versioning and aliasing. Each deployment creates a new version of the Lambda function. Once the new version is successfully deployed, the alias (e.g., live) is updated to point to this new version. This ensures that the traffic is routed to the new version seamlessly without any downtime. If any issues are detected, we can quickly revert to the previous version by updating the alias
+
 ## Deliverables
 1. Infrastructure as Code (IaC) scripts: Provided in the modules (amplify, lambda, rds, iam, vpc and security_group) and main.tf files.
 2. CI/CD pipeline configuration scripts: Included in the modules/codepipeline and related files.
