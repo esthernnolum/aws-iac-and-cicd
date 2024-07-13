@@ -41,7 +41,9 @@ Module Structure:
 git clone https://github.com/esthernnolum/aws-iac-and-cicd.git
 cd aws-iac-and-cicd
 ```
-2. Initialize Terraform:
+2. Update the main.tf in root folder to only call modules related to Infrastructure setup:
+    comment out lines 37 to 53 of ./main.tf
+3. Initialize Terraform:
 ```
 terraform init
 ```
@@ -54,22 +56,49 @@ terraform plan
 terraform apply
 ```
 
-
 ## Steps to Set Up the CI/CD Pipeline:
 
-1. Configure AWS CodePipeline for the frontend:
+1. Update the main.tf in root folder to only call modules related to CICD pipeline:
+    comment all lines except lines 38 to 45 of ./main.tf
+2. Configure AWS CodePipeline for the frontend:
 Use the modules/codepipeline module to create a pipeline that triggers on code changes, builds the React/Next.js application, and deploys it using AWS Amplify.
 
 2. Configure AWS CodePipeline for the backend:
 Use the same module to create a pipeline for the backend. The pipeline will trigger on code changes, build the Node.js application using AWS CodeBuild, and deploy it to AWS Lambda.
+4. Initialize Terraform:
+```
+terraform init
+```
+5. Review the things to provision:
+```
+terraform plan
+``` 
+6. Apply the Terraform scripts to provision the infrastructure:
+```
+terraform apply
+```
 
 ## Monitoring and Logging Setup Documentation: 
-1. Configure CloudWatch for Lambda and RDS:
+### Configure CloudWatch for Lambda and RDS:
+1. Update the main.tf in root folder to only call modules related to Monitoring:
+    comment all lines except lines 48 to 53 of ./main.tf
 2. Use the modules/cloudwatch module to set up CloudWatch log groups, metrics, and alarms.
 3. Configure alarms for Lambda function errors, latency, and RDS CPU utilization.
+4. Initialize Terraform:
+```
+terraform init
+```
+5. Review the things to provision:
+```
+terraform plan
+``` 
+6. Apply the Terraform scripts to provision the infrastructure:
+```
+terraform apply
+```
 
 ## Deliverables
-1. Infrastructure as Code (IaC) scripts: Provided in the modules and main.tf files.
+1. Infrastructure as Code (IaC) scripts: Provided in the modules (amplify, lambda, rds, iam, vpc and security_group) and main.tf files.
 2. CI/CD pipeline configuration scripts: Included in the modules/codepipeline and related files.
 3. Monitoring and logging configuration: Included in the modules/cloudwatch file.
 4. Detailed documentation: Provided in this README file, detailing the steps and configurations.
