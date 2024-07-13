@@ -28,8 +28,8 @@ resource "aws_lambda_function" "my_lambda" {
   function_name    = "my_lambda_function"
   role             = var.lambda_role_arn
   handler          = "index.handler"
-  runtime          = "nodejs14.x"
-  source_code_hash = filebase64sha256("function.zip")
+  runtime          = "nodejs18.x"
+  source_code_hash = filebase64sha256("function.zip") # The function.zip file contains the Node.js application code that will be deployed to AWS Lambda.
   environment {
     variables = {
       DB_HOST     = var.db_endpoint

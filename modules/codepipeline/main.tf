@@ -150,5 +150,6 @@ resource "aws_codebuild_project" "backend_build" {
 
   source {
     type = "CODEPIPELINE"
+    buildspec = "${path.module}/buildspec.yml"
   }
 }

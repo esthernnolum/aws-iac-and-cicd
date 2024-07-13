@@ -4,7 +4,7 @@ This project involves designing and implementing an AWS infrastructure using Ter
 
  ## 📌 Architecture Diagram
 
-![alt text](https://github.com/esthernnolum/aws-iac-and-cicd/blob/main/Terraform-infra-architecture.png?raw=true)
+![alt text](https://github.com/esthernnolum/aws-iac-and-cicd/blob/main/terraform-infra-architecture.png?raw=true)
 
 
 ## Infrastructure Design and Provisioning

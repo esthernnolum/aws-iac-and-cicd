@@ -69,7 +69,7 @@ resource "aws_sns_topic" "alerts" {
 resource "aws_sns_topic_subscription" "email_subscription" {
   topic_arn = aws_sns_topic.alerts.arn
   protocol  = "email"
-  endpoint  = "your-email@example.com" # Replace with your email
+  endpoint  = "eshernnolum@gmail.com"
 }
 
 output "lambda_role_arn" {
