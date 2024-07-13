@@ -61,17 +61,6 @@ resource "aws_iam_policy_attachment" "codebuild_policy_attach" {
   policy_arn = "arn:aws:iam::aws:policy/AWSCodeBuildDeveloperAccess"
 }
 
-# SNS Topic for Alarms
-resource "aws_sns_topic" "alerts" {
-  name = "alerts-topic"
-}
-
-resource "aws_sns_topic_subscription" "email_subscription" {
-  topic_arn = aws_sns_topic.alerts.arn
-  protocol  = "email"
-  endpoint  = "eshernnolum@gmail.com"
-}
-
 output "lambda_role_arn" {
   value = aws_iam_role.lambda_role.arn
 }

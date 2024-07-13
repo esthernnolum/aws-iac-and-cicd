@@ -13,6 +13,17 @@ variable "sns_topic_arn" {
   type        = string
 }
 
+# SNS Topic for Alarms
+resource "aws_sns_topic" "alerts" {
+  name = "alerts-topic"
+}
+
+resource "aws_sns_topic_subscription" "email_subscription" {
+  topic_arn = aws_sns_topic.alerts.arn
+  protocol  = "email"
+  endpoint  = "eshernnolum@gmail.com"
+}
+
 resource "aws_cloudwatch_log_group" "lambda_log_group" {
   name = "/aws/lambda/${var.lambda_function_name}"
   retention_in_days = 14
@@ -68,3 +79,8 @@ resource "aws_cloudwatch_metric_alarm" "rds_cpu_utilization" {
 
   alarm_actions = [var.sns_topic_arn]
 }
+
+output "sns_topic_arn" {
+  value = aws_sns_topic.alerts.arn
+}
+
