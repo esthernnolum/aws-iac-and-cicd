@@ -1,7 +1,14 @@
-# aws-iac-and-cicd
+# AWS Infrastructure and CI/CD Pipeline
+
+This project involves designing and implementing an AWS infrastructure using Terraform to support a highly available and scalable web application. The application features a frontend built with React/Next.js hosted on AWS Amplify, a backend built with Node.js hosted on AWS Lambda, and a MySQL database hosted on Amazon RDS. Additionally, the project includes setting up a CI/CD pipeline for automated deployment.
+
+ ## 📌 Architecture Diagram
+
+![alt text](https://github.com/esthernnolum/aws-iac-and-cicd/blob/main/Terraform-infra-architecture.png?raw=true)
+
 
 ## Infrastructure Design and Provisioning
-Module Structure: This module-based structure organizes the infrastructure into reusable components. Each module can be customized and reused across different environments or projects. The main.tf file integrates these modules to provision the complete infrastructure
+Module Structure:
 1. modules/vpc
 2. modules/rds
 3. modules/lambda
@@ -10,6 +17,17 @@ Module Structure: This module-based structure organizes the infrastructure into 
 6. modules/iam
 7. modules/codepipeline
 8. modules/cloudwatch
+
+ This module-based structure organizes the infrastructure into reusable components. Each module can be customized and reused across different environments or projects. The main.tf file integrates these modules to provision the complete infrastructure
+
+## Infrastructure Components:
+1. VPC: A VPC with public and private subnets across two availability zones to ensure high availability.
+2. RDS: A MySQL database hosted in private subnets for security.
+3. Lambda: Backend Node.js functions deployed on AWS Lambda.
+4. Amplify: React/Next.js frontend deployed using AWS Amplify.
+5. Security Groups: Configured to allow necessary traffic to RDS and Lambda.
+6. IAM Roles and Policies: To manage access securely.
+7. CI/CD Pipeline Setup Documentation:
 
 ## Prerequisites
 1. You need an AWS account with the necessary authorization to generate resources in these scripts.
@@ -27,7 +45,7 @@ cd aws-iac-and-cicd
 ```
 terraform init
 ```
-3. Review the things to be provision:
+3. Review the things to provision:
 ```
 terraform plan
 ``` 
@@ -36,17 +54,6 @@ terraform plan
 terraform apply
 ```
 
-## Explanation of Infrastructure Components:
-
-![alt text](https://github.com/esthernnolum/aws-iac-and-cicd/blob/main/Terraform-infra-architecture.png?raw=true)
-
-1. VPC: A VPC with public and private subnets across two availability zones to ensure high availability.
-2. RDS: A MySQL database hosted in private subnets for security.
-3. Lambda: Backend Node.js functions deployed on AWS Lambda.
-4. Amplify: React/Next.js frontend deployed using AWS Amplify.
-5. Security Groups: Configured to allow necessary traffic to RDS and Lambda.
-6. IAM Roles and Policies: To manage access securely.
-7. CI/CD Pipeline Setup Documentation:
 
 ## Steps to Set Up the CI/CD Pipeline:
 
