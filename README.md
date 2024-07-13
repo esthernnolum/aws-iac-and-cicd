@@ -29,10 +29,19 @@ Module Structure:
 6. IAM Roles and Policies: To manage access securely.
 7. CI/CD Pipeline Setup Documentation:
 
-## Prerequisites
-1. You need an AWS account with the necessary authorization to generate resources in these scripts.
-2. Linux server with git, terraform and aws cli installed
-3. Ensure that the github_connection.arn referenced in the CodePipeline configuration (modules/codepipeline/main.tf) exists and is accessible to Terraform
+## Assumptions:
+1. Repository Structure:
+The repositories for the frontend (React/Next.js) and backend (Node.js) applications are hosted on GitHub.
+The frontend and backend codebases are organized such that they can be built and deployed independently.
+
+2. Credentials and Access:
+Appropriate permissions are available for creating and managing AWS resources.
+The GitHub repository tokens and AWS credentials are accessible for the deployment processes.
+
+3. Terraform Setup:
+Terraform is installed and properly configured on the local machine or CI/CD environment where the infrastructure is being provisioned.Additionally git and aws cli installed
+
+4. github_connection.arn referenced in the CodePipeline configuration (modules/codepipeline/main.tf) exists and is accessible to Terraform
 
 ## Steps to Provision the Infrastructure:
 
@@ -96,6 +105,22 @@ terraform plan
 ```
 terraform apply
 ```
+## Decisions Made:
+1. Infrastructure as Code (IaC) Tool:
+Terraform was chosen over AWS CloudFormation for its flexibility, ease of use, and module-based architecture.
+
+2. Modular Approach:
+The infrastructure was broken down into reusable Terraform modules for VPC, RDS, Lambda, Amplify, CodePipeline, and CloudWatch to enhance maintainability and reusability.
+
+3. CI/CD Pipeline:
+Separate pipelines were created for the frontend and backend to allow independent deployments and reduce downtime.
+
+4. Security and Access Management:
+Security groups were configured to control access to the RDS database and Lambda functions, ensuring that only authorized traffic is allowed.
+IAM roles and policies were defined to securely manage access to AWS resources and services.
+
+5. Error Handling and Alerts:
+CloudWatch alarms were configured for critical metrics such as Lambda errors, latency, and RDS CPU utilization to ensure that issues are promptly detected and addressed.
 
 ## Deliverables
 1. Infrastructure as Code (IaC) scripts: Provided in the modules (amplify, lambda, rds, iam, vpc and security_group) and main.tf files.
